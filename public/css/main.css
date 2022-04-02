@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500;600&display=swap');
+
+/*--------Reglas generales---------*/
+:root {
+    --verde-oscuro: #0A3223;
+    --verde-claro: #0CBD79;
+    --rojo-titulo: #FF210B;
+    --blanco-fondo: #f5f0ed;
+    --hover-btn:#cebb0d;
+    --negro:#000000;
+    --transparente: #00ff0080;
+    --gris: #7a7a78;
+    /*Prueba paleta*/
+    --grisOscuro:#192a32;
+    --grisClaro:#888888;
+    --gris_Luminoso: #a8bec9;
+    --amarilloBtn:#f2b237;
+    --calypsoBtn:#31c4be;
+  }
+
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color:var(--grisOscuro);
+    background-position: bottom;
+    width: 800px;
+}
+
+/*--------Reglas Específicas----------*/
+
+/*Contenedor principal app*/
+
+.base-btn-graph{
+    width: 80%;
+    height: 1200px;
+    background-color: var(--grisClaro);
+    border: transparent;
+    margin: 50px;
+    padding: 50px;
+    padding-top: 10px;
+    border-radius: 15px 100px 15px 15px;
+    -webkit-app-region: drag;
+}
+
+/*Grafico*/
+canvas {
+    background-color: rgba(47, 152, 208, 0.0);
+    width: 400px;
+}
+
+.ref-grf{
+    background-color: rgba(47, 152, 208, 0.0);
+    padding: 1px;
+    font-size: 35px;
+    width: 100%;
+    height: 400px;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    border-radius: 7px;
+    border: none;
+}
+
+/*Elementos componentes app*/
+.contenedor-titulo{
+    width: 100%;
+    height: 100px;
+    padding: 1rem;
+}
+
+#titulo{
+    font-size: 60px;
+    margin-top: -1rem;
+    margin-bottom: 0;
+    font-family: 'Arial', sans-serif;
+    font-weight: normal;
+    color: var(--blanco-fondo);
+    padding: 10px 0 2px 0;
+}
+
+#subtitulo {
+    font-size: 30px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 600;
+    text-align: start;
+    color: var(--verde-oscuro);
+    padding-right: 5rem;
+    text-align: right;
+    margin-top: -7rem;
+    margin-right: 1.8rem;
+}
+
+#describ-dir{
+    margin-bottom: -1rem;
+    margin-left: 2rem;
+    margin-top: 2.5rem;
+    font-family: 'Montserrat','sans-serif';
+    font-weight: 300;
+}
+
+/* Contenedor drag and drop and button */
+.input-btn{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: -1rem;
+}
+
+.drag-area{
+    border: 1px dashed var(--verde-oscuro);
+    height: 150px;
+    width: 350px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: -5rem;
+    font-family: 'Monsterrat','sans-serif';
+}
+
+.drag-area.active{
+    border: 1px solid var(--amarilloBtn);
+    background-color: none;
+    transition: all 0.3s ease 0s;
+}
+
+.cuadro-anim{
+    background-color: var(--amarilloBtn);
+    width: 0;
+    height: 0;
+    transition: all 0.3s ease 0s;
+}
+
+.cuadro-anim:hover{
+    background-color: var(--amarilloBtn);
+    width: 350px;
+    height: 150px;
+    transition: all 0.3s ease 0s;
+}
+
+header{
+    font-family: 'Montserrat','sans-serif';
+}
+
+.drag-area .icon {
+    size: 1rem;
+}
+
+.drag-area header{
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--verde-oscuro);
+}
+
+.drag-area button {
+    padding: 10px 25px;
+    font-size: 20px;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    background: none;
+    color: var(--amarilloBtn);
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Montserrat', 'sans-serif';
+    font-weight: 300;
+    box-shadow: #000000;
+}
+
+/*Inputs*/
+input{
+    border-radius: 40px;
+    background: var(--blanco-fondo);
+    padding: 20px;   
+    height: 20px;
+    font-size: 2rem;
+    font-family:'Roboto', sans-serif;
+    font-weight: 500;
+    border: none;
+    margin: 1rem;
+    width: 90%;
+}
+
+
+/*Seccion arrastre y boton-controles*/
+#btn-procesar{
+    background-color: var(--rojo-titulo);
+    color: var(--blanco-fondo);
+    font-size: 2.5rem;
+    width: 60px;
+    height: 60px;
+    font-family: 'Monsterrat', sans-serif;
+    font-weight: bold;
+    border-radius: 50%;
+    border: none;
+    margin: 1rem;
+    text-align: center;
+    line-height: 65px;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    
+}
+#btn-procesar:hover{
+    background-color: #2EE59D;
+    box-shadow: 0px 15px 20px var(--amarilloBtn);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+
+.btn {
+    padding: 0.5rem;
+}
+
+#btn-procesar:hover{
+    background-color: var(--hover-btn);
+}
+
+/*Footer*/
+.footer{
+    text-align: center;
+    margin-top: -5rem;
+    overflow: hidden;
+}
+
+#creditos{
+    font-family: 'Arial', sans-serif;
+    font-weight: normal;
+    font-weight: 100;
+}
+
+  

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+    <title>Document</title>
+</head>
+<body>
+        <!--Contain all elements-->
+    <section class="base-btn-graph">
+
+        <section id="titulo">
+            <h1>Blender-Dragon</h1>
+        </section>
+        <section id="subtitulo">
+            <h2>MOCO</h2>
+        </section>
+
+        <!--inputs.buttons, etc.-->
+
+        <form action="/b-dragon" method="POST" name="datos" class="form" id="form_id" name="myform" enctype="multipart/form-data">
+            
+            <div class="cargaArchivo">
+
+                <div class="drag-area" id="zona-arrastre">
+                    
+                        <header>Arrastra archivo aqui:</header>
+                        <button>Buscar</button>
+                        <input type="file" id="csvFile" accept=".csv" hidden>
+                        <div class="cuadro-anim"></div>
+                </div>
+
+            </div>
+            <h5 id="describ-dir">Escribe aquí el directorio de salida:</h5>
+            <div class="input-btn">
+                    <input type="text" name="dir_export" id="dir_salida" value="" required>
+                    
+                <div class="btn"> 
+                    <button type="submit" id="btn-procesar" form="form_id">P</button>
+                </div>
+            </div>
+
+        </form>
+
+        <section class="graficos">
+                <div id="grf-mov">
+                    <div class="ref-grf">
+                    <canvas id="myChart"></canvas>
+                </div>
+
+                <div id="grf-mov">
+                    <div class="ref-grf">
+                    <canvas id="myChart2"></canvas>
+                </div>          
+        </section>
+
+        <!--Contain graph and database save in-->   
+        <section class="footer">
+            <h5 id="creditos">MAU/Región de los Ríos 2022/Derechos R.</h5>
+        </section>
+
+    </section>
+
+    <!--Scripts-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/public/js/drag_and_drop.js"></script>
+   
+
+</body>
+</html>
