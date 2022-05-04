@@ -9,6 +9,37 @@ input = dropArea.querySelector("input");
 //This is a global variable
 var file;
 
+//Esta lógica cambia el "form action" para enviar a Ruta ARCM/CSV. Funcion de abajo guarda valor de checkbox en var "route".
+
+var route =''
+
+document.addEventListener("change", function() {
+    
+    let a = document.getElementById("ch1")
+    let b = document.getElementById("ch2")
+    //texto mensaje a usuario
+    //let texto = document.getElementById("text-option")
+    
+    
+    //toggle
+    b.checked = !a.checked 
+   
+    if (b.checked == true) {
+        route = b.value
+        document.getElementById("text-option").innerHTML = "csv"
+    } else if(a.checked == true) {
+        route = a.value
+        document.getElementById("text-option").innerHTML = "arcm";
+    } else {
+        console.log("Se necesita click en una opcion para procesar los datos")
+    };
+    console.log(a.checked)
+    console.log(b.checked)
+});
+console.log("comprobamos si carga la ruta fuera de la funcion switch")
+console.log(route)
+
+
 //If user click on the button then the input also clicked
 button.onclick = () => {
 
@@ -36,6 +67,7 @@ dropArea.addEventListener("dragleave", ()=> {
     dropArea.classList.remove("active");
     dragText.textContent = "Arrastra y suelta para cargar archivo";
 });
+
 
 //If user drop File in DropArea
 dropArea.addEventListener("drop", (event)=> {
@@ -68,8 +100,6 @@ dropArea.addEventListener("drop", (event)=> {
             console.log("vemos si tenemos arrays de strings unitarios")
             console.log(arr)
 
-            //Prueba**********************
-            //Este metodo funciona pero no envía archivo.
             //Cuerpo de peticion solo carga input de campo, falta archivo
             form_id.addEventListener('submit', e => {
             let file = JSON.stringify(arr);//Convertimos a string para poder enviar con Fetch la variable con Array
@@ -80,7 +110,7 @@ dropArea.addEventListener("drop", (event)=> {
             let form = {file}//Aqui agregamos variable con objeto definida antes y resulto envío ;)
                 new FormData(form_id).forEach((value,key) => form[key] = value)
     
-                fetch('/b-dragon', {
+                fetch(route, {
                     method:'POST',
                     headers: {
                         'Content-Type':'application/json',
@@ -91,10 +121,7 @@ dropArea.addEventListener("drop", (event)=> {
                 .then(data => console.log(data))
                 .catch((err) => console.log(err))  
             })
-            //************Prueba
-            
-            
-         
+
             //Variables para guardar datos de keyframes
             const resPosXvTRACK = []; //variables x para grafico
             const resPosYvTRACK = []; //variables y para grafico
@@ -150,19 +177,11 @@ dropArea.addEventListener("drop", (event)=> {
                 let element = arr[b] * convertRad
                 resPosYvPAN.push(element)
             };
-/*
-            console.log("Valores de keyframes eje X e Y - vTRACK")
-            console.log(resPosXvTRACK)
-            console.log(resPosYvTRACK)
-            console.log("Valores de keyframes eje X e Y - vTILT")
-            console.log(resPosXvTILT)
-            console.log(resPosYvTILT)
-            console.log("Valores de keyframes eje X e Y - vPAN")
-            console.log(resPosXvPAN)
-            console.log(resPosYvPAN)
-*/
+
 //Aquí agregaremos la logica de ChartJS
 //Leemos los mismos datos que desde back para generar grafico de movimiento
+
+                const colorGrilla = '#606060'
 
                 const myForm = document.getElementById("form_id");
                 const csvFile = document.getElementById("csvFile");
@@ -211,7 +230,23 @@ dropArea.addEventListener("drop", (event)=> {
                 const config = {
                     type: 'line',
                     data: data,
-                    options: {}
+                    options: {    
+                        scales: {
+                            x:{
+                                grid: {
+                                    display:true,
+                                    color:colorGrilla,
+                                }
+                            },
+                            y:{
+                                grid: {
+                                    display:true,
+                                    color:colorGrilla,
+                                }
+                            },
+                            
+                        }
+                    }  
                 };
 
                 //Render
@@ -265,7 +300,23 @@ dropArea.addEventListener("drop", (event)=> {
                 const config2 = {
                     type: 'line',
                     data: data2,
-                    options: {}
+                    options: {
+                        scales: {
+                            x:{
+                                grid: {
+                                    display:true,
+                                    color:colorGrilla,
+                                }
+                            },
+                            y:{
+                                grid: {
+                                    display:true,
+                                    color:colorGrilla,
+                                }
+                            },
+                            
+                        }
+                    }
                 };
 
                 //Render

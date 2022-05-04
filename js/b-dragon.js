@@ -18,7 +18,7 @@ var router = express.Router()
 
 /*Organizamos todo dentro de un Router. Esto permite tomar variables directo
 desde Fetch ahorrando problema de traspaso de Server a un Modulo*/
-router.post('/', function(req,res){
+router.post('/b-dragon', function(req,res){
 
     //Pasamos lo que estaba en metodo POST desde server.js
     //res.sendFile(__dirname + '/public/html/index.html');
@@ -31,7 +31,7 @@ router.post('/', function(req,res){
         const results = [];
 
         //Creamos la función para leer CSV usando CSV-Parser
-        function csvDataTrack() {  
+        function csvDataDragon() {  
       
             function cargaDatosExp() {
             //Reformulamos funcion para dividor array del lector al tiro   
@@ -209,11 +209,11 @@ router.post('/', function(req,res){
                         const root =`
                         <?xml version="1.0" encoding="UTF-8"?>
                             <scen:scene xmlns:scen="http://caliri.com/motion/scene" cameraOperator="">
-                                <scen:axis preset="eMotimo" pulseRate="10000" units="m" stepsPerUnit="444.444" graphSolo="true" connectionType="1" graphColor="-244974" integral="false" name="vTRACK" base="0" connectionChannel="1" runMaxVelocity="40000" runMaxAcceleration="200000" viewPosition="20">
+                                <scen:axis preset="eMotimo" pulseRate="10000" units="m" stepsPerUnit="444.444" graphSolo="true" connectionType="1" graphColor="-244974" integral="false" name="vTRACK" base="0" connectionChannel="3" runMaxVelocity="40000" runMaxAcceleration="200000" viewPosition="20">
                                     ${keyMocoPosX.join(" ")}
                                     ${keyMocoCtrlPointPosXWrite.join(" ")}      
                                 </scen:axis> 
-                                <scen:axis preset="eMotimo" pulseRate="10000" units="deg" stepsPerUnit="444.444" graphSolo="true" connectionType="1" graphColor="-461291" integral="false" name="vTILT" base="0" connectionChannel="1" runMaxVelocity="40000" runMaxAcceleration="200000" viewPosition="20">
+                                <scen:axis preset="eMotimo" pulseRate="10000" units="deg" stepsPerUnit="444.444" graphSolo="true" connectionType="1" graphColor="-461291" integral="false" name="vTILT" base="0" connectionChannel="2" runMaxVelocity="40000" runMaxAcceleration="200000" viewPosition="20">
                                     ${keyMocoRotX.join(" ")}
                                     ${keyMocoCtrlPointRotXWrite.join(" ")}      
                                 </scen:axis>
@@ -231,7 +231,7 @@ router.post('/', function(req,res){
                             
 
                             //Escribimos el archivo finalmente .ARCM   
-                            fs.writeFile(dir, xmlExport, (err) => {
+                            fs.writeFile(`${dir}.arcm`, xmlExport, (err) => {
                                 if (err) throw err;
                                 console.log('Archivo .arcm escrito!');
                                 //console.log(fs.readFileSync("/Users/mauricio/Desktop/arcm/movInterpLineal2.arcm","utf8"))
@@ -248,7 +248,7 @@ router.post('/', function(req,res){
             }
             cargaDatosExp();
         };
-        csvDataTrack();
+        csvDataDragon();
 
     } catch (error) {
         console.log(error)

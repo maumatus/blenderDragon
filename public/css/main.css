@@ -1,28 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,500;1,100;1,500&display=swap');
 
 /*--------Reglas generales---------*/
 :root {
-    --verde-oscuro: #0A3223;
     --verde-claro: #0CBD79;
     --rojo-titulo: #FF210B;
     --blanco-fondo: #f5f0ed;
     --hover-btn:#cebb0d;
     --negro:#000000;
-    --transparente: #00ff0080;
     --gris: #7a7a78;
     /*Prueba paleta*/
-    --grisOscuro:#192a32;
-    --grisClaro:#888888;
+    --grisOscuro:#0e181d;
     --gris_Luminoso: #a8bec9;
+    --gris18xciento:#484848;
     --amarilloBtn:#f2b237;
-    --calypsoBtn:#31c4be;
+    --morado:#504487;
   }
 
 
 body {
     margin: 0;
     padding: 0;
-    background-color:var(--grisOscuro);
+    background-color:var(--morado);
     background-position: bottom;
     width: 800px;
 }
@@ -34,18 +33,20 @@ body {
 .base-btn-graph{
     width: 80%;
     height: 1200px;
-    background-color: var(--grisClaro);
+    background-color: var(--gris18xciento);
     border: transparent;
     margin: 50px;
     padding: 50px;
     padding-top: 10px;
-    border-radius: 15px 100px 15px 15px;
+    border-radius: 15px 80px 15px 15px;
     -webkit-app-region: drag;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
 
 /*Grafico*/
 canvas {
     background-color: rgba(47, 152, 208, 0.0);
+    color: #cda744;
     width: 400px;
 }
 
@@ -70,12 +71,41 @@ canvas {
 
 #titulo{
     font-size: 60px;
-    margin-top: -1rem;
-    margin-bottom: 0;
-    font-family: 'Arial', sans-serif;
-    font-weight: normal;
-    color: var(--blanco-fondo);
+    margin-top: -30px;
+    margin-bottom: -50px;
     padding: 10px 0 2px 0;
+}
+
+#titulo h1{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--blanco-fondo);
+    margin-right: 50px;
+    margin-bottom: 0;
+}
+
+#linea-titulo {
+    color: #0CBD79;
+    width: 100%;
+    margin-top: -60px;
+    margin-bottom: 60px;
+}
+
+#titulo {
+    display: flex;
+    flex-direction: row;   
+}
+
+#logo {
+    position: relative;
+    height: 150px;
+    width: 150px;
+    margin-top: 57px;
+    margin-left: 205px;
+    margin-bottom: 5px;
+    text-align: end;
+    bottom: 11px;
 }
 
 #subtitulo {
@@ -97,7 +127,11 @@ canvas {
     font-family: 'Montserrat','sans-serif';
     font-weight: 300;
 }
-
+/*Flexbox of the drag and drop and slider*/
+.sec-carga{
+    display: flex;
+    flex-direction: row;
+}
 /* Contenedor drag and drop and button */
 .input-btn{
     display: flex;
@@ -168,6 +202,32 @@ header{
     box-shadow: #000000;
 }
 
+ /* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 120px;
+    margin-left: 1rem;
+    margin-top: -50px;
+    border-radius: 10px;
+  }  
+ #text-option {
+    position: absolute;
+    font-size: 40px;
+    font-family: 'Montserrat', 'sans-serif';
+    font-weight: 600;
+    color: var(--gris_Luminoso);
+    margin-top: 0px;
+    padding-right: 2rem;
+    padding-left: 1rem;
+    margin-left: 0rem;
+ }
+
+ #ch1 {
+     position: absolute;
+     margin-top: 100px;
+ }
 /*Inputs*/
 input{
     border-radius: 40px;
@@ -180,6 +240,53 @@ input{
     border: none;
     margin: 1rem;
     width: 90%;
+}
+
+input[type=checkbox]{
+    height: 0;
+	width: 0;
+	visibility: hidden;
+}
+
+.dragon {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 30px;
+    height: 60px;
+    background: grey;
+    display: block;
+    border-radius: 100px;
+    position: absolute;
+    margin-top: 60px;
+    margin-left: 15px;
+}
+
+.dragon:after {
+	content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 20px;
+    height: 20px;
+    background: var(--amarilloBtn);
+    border-radius: 50%;
+    transition: 0.1s;
+}
+
+#ch1:checked + .dragon {
+	background: var(--gris_Luminoso);
+}
+
+#ch1:checked + .dragon:after {
+    top: 30px;	
+	transform: translateY(20px);
+}
+
+.dragon:active {
+	transform: translateY(0px);
+}
+.dragon:active:after {
+	transform: translateY(30px);
 }
 
 
@@ -207,7 +314,7 @@ input{
 }
 #btn-procesar:hover{
     background-color: #2EE59D;
-    box-shadow: 0px 15px 20px var(--amarilloBtn);
+    box-shadow: 0px 0px 20px var(--amarilloBtn);
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;

@@ -15,7 +15,8 @@ const csv = require('./js/b-dragon.js')
 let fs = require('fs')
 const res = require('express/lib/response')
 const csvData = require('./js/b-dragon.js')
-const csvDataTrack = require('./js/b-dragon.js')
+const csvDataDragon = require('./js/b-dragon.js')
+const csvDataAe = require('./js/b-ae.js')
 
 //Definimos puerto escucha
 let PORT = 3000
@@ -36,8 +37,10 @@ app.get("/",(req,res) => {
     res.sendFile(__dirname + '/public/html/index.html')
 });
 
-//Usamos el Router
-app.use("/b-dragon", csvDataTrack);
+//Router
+app.use("/", csvDataAe);
+app.use("/", csvDataDragon);
+
 
 
 

@@ -13,33 +13,43 @@
     <section class="base-btn-graph">
 
         <section id="titulo">
-            <h1>Blender-Dragon</h1>
-        </section>
-        <section id="subtitulo">
-            <h2>MOCO</h2>
+            <h1>B-Motion</h1>
+            <img src="/public/img/robot.svg" id="logo"></img>
         </section>
 
+        <hr id="linea-titulo"></hr>
+
+        <br></br>
         <!--inputs.buttons, etc.-->
 
-        <form action="/b-dragon" method="POST" name="datos" class="form" id="form_id" name="myform" enctype="multipart/form-data">
-            
-            <div class="cargaArchivo">
+        <form name="datos" method="POST" class="form" id="form_id" enctype="multipart/form-data">
+        <div class="sec-carga"> 
 
+            <div class="cargaArchivo">
                 <div class="drag-area" id="zona-arrastre">
-                    
                         <header>Arrastra archivo aqui:</header>
                         <button>Buscar</button>
                         <input type="file" id="csvFile" accept=".csv" hidden>
                         <div class="cuadro-anim"></div>
                 </div>
-
             </div>
+        
+            <!--Switch para modificar action de form. Asi agregamos conversión a mgJSON-->
+            <label class="switch">
+                <h5 id="text-option"></h5>
+                <label for="ch1" class="dragon">ARCM</label>
+                <input type="checkbox" class="btnAction" value="/b-dragon" id="ch1" checked></input>
+                <input type="checkbox" class="btnAction" value="/b-ae" id="ch2"></input>
+            </div>
+
+        </div>
+
             <h5 id="describ-dir">Escribe aquí el directorio de salida:</h5>
             <div class="input-btn">
                     <input type="text" name="dir_export" id="dir_salida" value="" required>
                     
                 <div class="btn"> 
-                    <button type="submit" id="btn-procesar" form="form_id">P</button>
+                    <button type="submit" id="btn-procesar" form="form_id" name="submit">P</button>
                 </div>
             </div>
 
@@ -59,7 +69,7 @@
 
         <!--Contain graph and database save in-->   
         <section class="footer">
-            <h5 id="creditos">MAU/Región de los Ríos 2022/Derechos R.</h5>
+            <h5 id="creditos">MAU/Santiago-2022/Derechos R.</h5>
         </section>
 
     </section>
